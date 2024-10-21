@@ -75,10 +75,13 @@ def extract_reciever_org(email_text):
     recipient_email = extract_reciever_email(email_text)
     return extract_organization(recipient_email) if recipient_email else None
 
-
-
-
-
+def extract_phone_numbers(text):
+    # Regex pattern to match phone numbers
+    pattern = r'\+?\d{0,3}[-\s]?\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{4}(?: *x\d+)?'
+    # Find all matches in the text
+    phone_numbers = re.findall(pattern, text)
+    
+    return phone_numbers
 
 
 
@@ -100,9 +103,11 @@ X-Origin: Allen-P
 X-FileName: pallen (Non-Privileged).pst
 
 this is the part of the message i need 
-Here is our forecast 
+this +91 713-853-7107
+123-456-7890
+Here is our forecast "\nMr. Buckner,\n\n For delivered gas behind San Diego, Enron Energy Services is the appropriate \nEnron entity.  I have forwarded your request to Zarin Imam at EES.  Her phone \nnumber is 
+713-853-7107
+.  \n\nPhillip Allen"
 
 
 """
-
-

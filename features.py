@@ -10,10 +10,14 @@ class Features:
         self.reciever_email =""
         self.sender_org = ""
         self.reciever_org = ""
+        self.subject=""
         self.body = ""
         self.date = ""
         self.message_id=""
+        self.word_count = 0
         self.summarisedBody = ""
+        self.named_entities = {}
+        self.phone_numbers = []
 
     def populate_name(self):
         # Check if sender_full_name is set
