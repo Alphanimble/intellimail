@@ -34,5 +34,6 @@ mongoPusher.convert_to_json(parsed_data_list)
 
 conn=psgs.connect_to_db("mails", "root", "root")
 if conn:
+    print("connected")
     res = psgs.execute_query(conn, "select * from public.users;")
 
