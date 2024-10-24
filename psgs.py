@@ -1,4 +1,5 @@
 import os
+import json
 import psycopg2
 from psycopg2 import Error
 import logging
@@ -28,10 +29,13 @@ def connect_to_db(db_name, db_user, db_password, db_host='localhost', db_port=54
         print(f"An error occurred while connecting to the database: {error}")
         return None
 
-def execute_query(conn, query):
+def execute_query(conn, query, params=None):
     try:
         with conn.cursor() as cur:
-            cur.execute(query)
+            if params:
+                cur.execute(query, params)
+            else:
+                cur.execute(query)
             conn.commit()
             if cur.description:
                 return cur.fetchall()
@@ -44,6 +48,26 @@ def execute_query(conn, query):
         raise
     finally:
         cur.close()
+
+
+def add_mail_row(conn, obj):
+    query = """
+        INSERT INTO public.email_messages (
+            sender_first_name, sender_last_name, receiver_first_name, receiver_last_name,
+            sender_email, receiver_email, sender_org, receiver_org, subject, body, date, message_id,
+            word_count, summarised_body, phone_numbers, named_entities
+        ) VALUES (
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, TO_TIMESTAMP(%s, 'Dy DD Mon YYYY HH24:MI:SS'), %s, %s, %s, %s, %s
+        );
+    """
+    params = (
+        obj.sender_first_name, obj.sender_last_name, obj.reciever_first_name, obj.reciever_last_name,
+        obj.sender_email, obj.reciever_email, obj.sender_org, obj.reciever_org, obj.subject,
+        obj.body, obj.date, obj.message_id, obj.word_count, obj.summarised_body,
+        obj.phone_numbers if isinstance(obj.phone_numbers, list) else [],
+        json.dumps(obj.named_entities) if obj.named_entities else [],
+    )
+    res = execute_query(conn, query, params)
 
 def main():
     try:
