@@ -15,7 +15,7 @@ class Features:
         self.date = ""
         self.message_id=""
         self.word_count = 0
-        self.summarisedBody = ""
+        self.summarised_body = ""
         self.named_entities = {}
         self.phone_numbers = []
 
@@ -37,6 +37,9 @@ class Features:
         else:
             self.reciever_first_name = ""
             self.reciever_last_name = ""
+
+    def fix_body(self):
+        return self.body.replace("'", "\\'")
 
     def __str__(self):
         return f"{self.date}\n,{self.body}\n,{self.reciever_org}\n,{self.sender_org}\n,{self.reciever_email}\n,{self.sender_email}\n"

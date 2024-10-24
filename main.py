@@ -28,12 +28,12 @@ for index, row in emailDf.iterrows():
     parsed_data_list.append(obj)
 
 
-# spacy_parser_layer.process_features(parsed_data_list)
+spacy_parser_layer.process_features(parsed_data_list)
 
 mongoPusher.convert_to_json(parsed_data_list)
 
-conn=psgs.connect_to_db("mails", "root", "root")
-if conn:
-    print("connected")
-    res = psgs.execute_query(conn, "select * from public.users;")
-
+# conn=psgs.connect_to_db("mails", "root", "root")
+# if conn:
+#     print("connected")
+#     for i in parsed_data_list:
+#         psgs.add_mail_row(conn,i)
