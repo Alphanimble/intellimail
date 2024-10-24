@@ -17,16 +17,16 @@ The project is hosted on Github
 
 [GitHub - Alphanimble/intellimail](https://github.com/Alphanimble/intellimail)
 
-Clone the repository and run the 
-
-```bash
-mailify/bin/activate
-```
-
-This will activate the virtual environment
+Clone the repository inside a python venv , activate it 
 
 Then run the [main.py](http://main.py) file as such in the terminal
 
 ```bash
-C:\..\mailify> & c:/../mailify/.venv/Scripts/python.exe c:/../mailify/main.py
+python3 main.py
+```
+
+then you can run the mistral Layer 
+
+```bash
+python3 mistral_layer.py
 ```
