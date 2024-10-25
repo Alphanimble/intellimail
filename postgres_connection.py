@@ -5,29 +5,33 @@ from psycopg2 import Error
 import logging
 
 # Set up logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 # Database configuration
-DB_NAME = os.environ.get('DB_NAME', 'mails')
-DB_USER = os.environ.get('DB_USER', 'root')
-DB_PASSWORD = os.environ.get('DB_PASSWORD', 'root')
-DB_HOST = os.environ.get('DB_HOST', 'localhost')
-DB_PORT = int(os.environ.get('DB_PORT', '5432'))
+DB_NAME = os.environ.get("DB_NAME", "mails")
+DB_USER = os.environ.get("DB_USER", "root")
+DB_PASSWORD = os.environ.get("DB_PASSWORD", "root")
+DB_HOST = os.environ.get("DB_HOST", "localhost")
+DB_PORT = int(os.environ.get("DB_PORT", "5432"))
 
-def connect_to_db(db_name, db_user, db_password, db_host='localhost', db_port=5432):
+
+def connect_to_db(db_name, db_user, db_password, db_host="localhost", db_port=5432):
     try:
         # Construct the connection string
         connection_string = f"dbname='{db_name}' user='{db_user}' password='{db_password}' host='{db_host}' port={db_port}"
-        
+
         # Connect to the database
         conn = psycopg2.connect(connection_string)
-        
+
         print("Successfully connected to the database.")
         return conn
-    
+
     except (Exception, Error) as error:
         print(f"An error occurred while connecting to the database: {error}")
         return None
+
 
 def execute_query(conn, query, params=None):
     try:
@@ -61,13 +65,25 @@ def add_mail_row(conn, obj):
         );
     """
     params = (
-        obj.sender_first_name, obj.sender_last_name, obj.reciever_first_name, obj.reciever_last_name,
-        obj.sender_email, obj.reciever_email, obj.sender_org, obj.reciever_org, obj.subject,
-        obj.body, obj.date, obj.message_id, obj.word_count, obj.summarised_body,
+        obj.sender_first_name,
+        obj.sender_last_name,
+        obj.reciever_first_name,
+        obj.reciever_last_name,
+        obj.sender_email,
+        obj.reciever_email,
+        obj.sender_org,
+        obj.reciever_org,
+        obj.subject,
+        obj.body,
+        obj.date,
+        obj.message_id,
+        obj.word_count,
+        obj.summarised_body,
         obj.phone_numbers if isinstance(obj.phone_numbers, list) else [],
         json.dumps(obj.named_entities) if obj.named_entities else [],
     )
     res = execute_query(conn, query, params)
+
 
 def main():
     try:
@@ -77,11 +93,11 @@ def main():
             user=DB_USER,
             password=DB_PASSWORD,
             host=DB_HOST,
-            port=DB_PORT
+            port=DB_PORT,
         )
         if conn:
             print("db connected")
-        
+
         # Create a table
         # columns = [('name', 'VARCHAR(100)'), ('email', 'VARCHAR(100) UNIQUE NOT NULL')]
         # create_table(conn, "users", columns)
@@ -98,6 +114,7 @@ def main():
         if conn:
             conn.close()
             logging.info("Database connection closed")
+
 
 if __name__ == "__main__":
     main()

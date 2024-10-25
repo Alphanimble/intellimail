@@ -1,12 +1,5 @@
 import re
 
-    # pattern = r"""
-    # ^Message-ID:\s*<([^>]+)>
-    # Date:\s*(.*?)\n
-    # From:\s*([^@]+)@[^@]+\.[^@]+
-    # To:\s*(.*?)\nmessage_id
-    # Subject:\s*(.*)$
-    # """
 def extract_body(text):
     pattern = r'X-FileName:\s*([^>]+)'
     match = re.search(pattern, text, re.MULTILINE)
