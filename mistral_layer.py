@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from mistralai import Mistral
-import psgs
+import postgres_connection
 
 # Load environment variables from .env file
 load_dotenv()
@@ -31,6 +31,6 @@ def process_prompt(text):
 
 
 def execute_response(query):
-    conn = psgs.connect_to_db("mails", "root", "root")
+    conn = postgres_connection.connect_to_db("mails", "root", "root")
     if conn:
-        return psgs.execute_query(conn, query)
+        return postgres_connection.execute_query(conn, query)

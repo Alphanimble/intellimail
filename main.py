@@ -1,10 +1,10 @@
 import pandas as pd
 import features
 import regexParser
+import excelConverter
 import mongoPusher
 import spacy_parser_layer
-import psgs
-# data1=features.Features("rakshith", "rakshith.dope@gmail.com", "alphanimble")
+import postgres_connection
 
 df = pd.read_csv("data.csv")
 emailDf = pd.DataFrame(df.iloc[:, 1])
@@ -28,14 +28,14 @@ for index, row in emailDf.iterrows():
     parsed_data_list.append(obj)
 
 
-# export_features_to_excel(parsed_data_list)
+# excelConverter.export_features_to_excel(parsed_data_list)
 
 # spacy_parser_layer.process_features(parsed_data_list)
 
 # mongoPusher.convert_to_json(parsed_data_list)
 
-# conn=psgs.connect_to_db("mails", "root", "root")
+# conn = postgres_connection.connect_to_db("mails", "root", "root")
 # if conn:
 #     print("connected")
 #     for i in parsed_data_list:
-#         psgs.add_mail_row(conn,i)
+#         postgres_connection.add_mail_row(conn, i)
