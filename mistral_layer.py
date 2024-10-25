@@ -31,6 +31,6 @@ def process_prompt(text):
 
 
 def execute_response(query):
-    conn = postgres_connection.connect_to_db("mails", "root", "root")
+    conn = postgres_connection.connect_to_db("mails", "postgres", "root")
     if conn:
         return postgres_connection.execute_query(conn, query)
