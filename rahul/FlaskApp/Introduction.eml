@@ -1,0 +1,138 @@
+Delivered-To: rahul.m@alphanimble.com
+Received: by 2002:a59:b922:0:b0:48e:b904:cccf with SMTP id u2csp771081vqh;
+        Wed, 9 Oct 2024 03:52:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWBPq8WwgqEHopgfNYQxl18zkeFIzyQWmkWwKHnt+EAhB1a5hboyZd2F2U7eGCpMZXe9dbpEfWm@alphanimble.com
+X-Received: by 2002:a05:6a00:1816:b0:717:90cd:7943 with SMTP id d2e1a72fcca58-71e1dbcab4fmr2775542b3a.28.1728471142500;
+        Wed, 09 Oct 2024 03:52:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1728471142; cv=none;
+        d=google.com; s=arc-20240605;
+        b=E/qpTqnhVHo5L3ChYLOEVljCnhXDQfSyf8nUBajpQfL1eV0cjGq/2nbOd0l+gaRwyf
+         1bIpvV847+77ypihwVr9n+iicvLrUBR+JjyaZHEQtI+gL82p6CxDLU2xSI+Vd3QTuHh1
+         zpNevRALbPUx/RTA6U8EAKpZXycrY+78gVi6JV+ZungwRAU5/kDK+QUw9mynvwmxaqiZ
+         fMBQi2oLWf4dfHgNU6giEnoKrDKl5zC2YlMZVMdLRzSMtZppg79AruJuCe5T00cZkgsf
+         r3BiaFdSzkzZB68pnG5CWw4WqNa6gPkcnYE8csxu7EuBzDeJKhcL5w8wjSWNJobzKLOG
+         MxRw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:content-language:accept-language:message-id:date
+         :thread-index:thread-topic:subject:to:from:dkim-signature;
+        bh=xr/NFmYj9aTk4PVhwZGqUruDE34PBLHL8TVwcgRWmyQ=;
+        fh=AaQ3to398sD4WL30Z1XuRyIgzNSJL6yP4/jeX30zkec=;
+        b=gpul5dJZYEBzEcWZvqnjpuN+nNkW3tM73Tcly/wkrUBb9ArlaDVo8TIK3u6jyAOuev
+         PoOomZhYVFLminqC4G8Yd9Yix90hA8yKFkpjG996j0lMW+xNZKoQPQY2Wvqvcar3D8vb
+         WEfKKb2n1tLgRnk3zF4ikDAAyo9N7arkDmcc0nWvOV4aoUQ4UIpqFewmJHhAa/iJ32ch
+         sN5/ieRVlPtLlPPkK84/0aMGFZGd/PO8bRDCSoWrP9QcO6tbM6YmYogakzY/+O8QJAjJ
+         /er8SPK2D4p3HKDXdHbJN2DX5hRsZmSBcnbSdvAg9pEQNRS8hIXmy9PiuAlIQDhnx04r
+         m47Q==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@alphanimble-com.20230601.gappssmtp.com header.s=20230601 header.b=cF9DR0FV;
+       spf=pass (google.com: domain of krishnananda.r@alphanimble.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=krishnananda.r@alphanimble.com;
+       dara=neutral header.i=@alphanimble.com
+Return-Path: <krishnananda.r@alphanimble.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-71df0cd4ffasor5803518b3a.2.2024.10.09.03.52.22
+        for <rahul.m@alphanimble.com>
+        (Google Transport Security);
+        Wed, 09 Oct 2024 03:52:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of krishnananda.r@alphanimble.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@alphanimble-com.20230601.gappssmtp.com header.s=20230601 header.b=cF9DR0FV;
+       spf=pass (google.com: domain of krishnananda.r@alphanimble.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=krishnananda.r@alphanimble.com;
+       dara=neutral header.i=@alphanimble.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=alphanimble-com.20230601.gappssmtp.com; s=20230601; t=1728471142; x=1729075942; darn=alphanimble.com;
+        h=mime-version:content-language:accept-language:message-id:date
+         :thread-index:thread-topic:subject:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xr/NFmYj9aTk4PVhwZGqUruDE34PBLHL8TVwcgRWmyQ=;
+        b=cF9DR0FVh0EboHYMgbuGLLkJ4+7pUVBhNLY830f6GlS0d7R4izvRNDiQu8NvN8YgkI
+         zW/+URzoTTc9MaPFd8TOenHRqKDA0CgVg8E0jCid2ikCu6gh6VJIlnOUdpJe9HcDIhxW
+         F5SPK4Z1Q1jYEoCgKVQxN7GmfsB6F5qpbj4cbpmoGvSHcmMEm9Kv25KPuS3Ma6ITLo4C
+         Ha/qigmjBcdXSL4+Nkh9xk7a28QX0EhI19YHx5MWnPGTLsI4Zf81MJhRFjwR0xrVV2Kb
+         wtVo2EtM4IUwCNEckUJRpdcWRL6uOFPVidaT1NVuRRhHLlcX2UtWiGBq1gSSz0XxA4Dp
+         dmrQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1728471142; x=1729075942;
+        h=mime-version:content-language:accept-language:message-id:date
+         :thread-index:thread-topic:subject:to:from:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=xr/NFmYj9aTk4PVhwZGqUruDE34PBLHL8TVwcgRWmyQ=;
+        b=xNXWC+v1qh6dJqI6D1Fo3X5Dp/82ME4xiraCk9XX+GBLdWmKQyx760v+oP9FWtIRG+
+         CaOpcSf5Cypm/cue1eonemqclx3LiL543gej2XOWqVKuEJKGK6qU5SFu4Hz4Lqpu1UxZ
+         bGiJMv/lFl+DAKzApFjBlspilGwTa53Eh3WTJrqqof4MGMmUASuz0vwT8k377OOxgXvJ
+         /furJyUbhTF7ryrMt6zBCaYlBcGqaHHQ32Ksq3NMEjEKcIugQQi3vdKX5EvuOsNJMhuk
+         EW6inGYnOO+xOZmnmWsXJyIFd5cHLYRckrXi/CQTZDovPub8IsvSwSyWN7GD+pX6VgUa
+         YkHg==
+X-Forwarded-Encrypted: i=1; AJvYcCUuiJGuy699mNTupZu5btoLsMeg5/FjfaB7CZSbYkb03kkbSGHSOCujbGpORSv/sKeQrCitfg/+@alphanimble.com
+X-Gm-Message-State: AOJu0YwytqG1513TINP/XhrMsJ0U7yaxFtd8oBEXXNHo9HEy/K4aat2r
+	lPrMwMBN6kM/rOm31Y8+KCdKilaeUciYZ0cvkHjRD1wUbQPi/QwC0WHF9B/NQv8tnjDJl8mA8Fg
+	nsg4tiQ==
+X-Google-Smtp-Source: AGHT+IHdUfOCwXoZrChredY8+RdPtmtNb+khX6GdI9lJoEPuvhIevlrj4CegMx4V+ACC7X4mOa9Irw==
+X-Received: by 2002:a05:6a21:3942:b0:1d8:aa24:caeb with SMTP id adf61e73a8af0-1d8aa24cccfmr657395637.49.1728471141818;
+        Wed, 09 Oct 2024 03:52:21 -0700 (PDT)
+Return-Path: <krishnananda.r@alphanimble.com>
+Received: from SI2PR06MB5091.apcprd06.prod.outlook.com ([2603:1046:c01:24aa::5])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7e9f68320ffsm8268159a12.46.2024.10.09.03.52.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 09 Oct 2024 03:52:21 -0700 (PDT)
+From: Krishnananda R <krishnananda.r@alphanimble.com>
+To: "triv@alphanimble.com" <triv@alphanimble.com>, "rahul.m@alphanimble.com"
+	<rahul.m@alphanimble.com>, "rakshith.g@alphanimble.com"
+	<rakshith.g@alphanimble.com>, "prajwal.p@alphanimble.com"
+	<prajwal.p@alphanimble.com>
+Subject: Introduction 
+Thread-Topic: Introduction 
+Thread-Index: AQHbGjkKPc2KMqL+Hk+P0dTSaJ48bw==
+X-MS-Exchange-MessageSentRepresentingType: 1
+Date: Wed, 9 Oct 2024 10:52:18 +0000
+Message-ID:
+	<SI2PR06MB50915CD790AC930831A23BC0F77F2@SI2PR06MB5091.apcprd06.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-Exchange-Organization-SCL: -1
+X-MS-TNEF-Correlator:
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+x-ms-reactions: allow
+Content-Type: multipart/alternative;
+	boundary="_000_SI2PR06MB50915CD790AC930831A23BC0F77F2SI2PR06MB5091apcp_"
+MIME-Version: 1.0
+
+--_000_SI2PR06MB50915CD790AC930831A23BC0F77F2SI2PR06MB5091apcp_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+
+Hi, my name is R Krishnananda. You can use this mail address to communicate=
+ with me.
+(Please ignore mail from rkrishnananda2003@gmail.com)
+
+Thank you
+R Krishnananda
+
+--_000_SI2PR06MB50915CD790AC930831A23BC0F77F2SI2PR06MB5091apcp_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+</head>
+<body>
+<div><br>
+</div>
+<div id=3D"ms-outlook-mobile-signature" dir=3D"auto">
+<div dir=3D"auto">Hi, my name is R Krishnananda. You can use this mail addr=
+ess to communicate with me.&nbsp;</div>
+<div dir=3D"auto">(Please ignore mail from rkrishnananda2003@gmail.com)</di=
+v>
+<div dir=3D"auto"><br>
+</div>
+<div dir=3D"auto">Thank you</div>
+<div dir=3D"auto">R Krishnananda&nbsp;</div>
+</div>
+</body>
+</html>
+
+--_000_SI2PR06MB50915CD790AC930831A23BC0F77F2SI2PR06MB5091apcp_--

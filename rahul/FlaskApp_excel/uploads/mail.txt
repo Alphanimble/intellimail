@@ -1,0 +1,7 @@
+{
+  "_id": {
+    "$oid": "6708a9fc2a972ccfae483e87"
+  },
+  "file": "allen-p/_sent_mail/110.",
+  "message": "Message-ID: <90123456.8899001122.JavaMail.evans@thyme>  \nDate: Wed, 14 Feb 2001 11:30:00 -0700 (PDT)  \nFrom: phillip.allen@enron.com  \nTo: lily.james@enron.com  \nSubject: Coffee Break?  \nMime-Version: 1.0  \nContent-Type: text/plain; charset=us-ascii  \nContent-Transfer-Encoding: 7bit  \nX-From: Phillip K Allen  \nX-To: Lily James  \nX-cc:  \nX-bcc:  \nX-Folder: \\Phillip_Allen_Feb2001\\'Sent Mail  \nX-Origin: Allen-P  \nX-FileName: pallen.nsf  \n\nHello Lily,\n\nJust wondering if you'd like to grab a coffee later today. Let me know if you're free!"
+}

@@ -1,0 +1,7 @@
+{
+  "_id": {
+    "$oid": "6708a9fc2a972ccfae483e7d"
+  },
+  "file": "allen-p/_sent_mail/101.",
+  "message": "Message-ID: <20641191.1075855687472.JavaMail.evans@thyme>\nDate: Tue, 17 Oct 2000 02:26:00 -0700 (PDT)\nFrom: phillip.allen@enron.com\nTo: mark.scott@enron.com\nSubject: Re: High Speed Internet Access\nMime-Version: 1.0\nContent-Type: text/plain; charset=us-ascii\nContent-Transfer-Encoding: 7bit\nX-From: Phillip K Allen\nX-To: Mark Scott\nX-cc: \nX-bcc: \nX-Folder: \\Phillip_Allen_Dec2000\\Notes Folders\\'sent mail\nX-Origin: Allen-P\nX-FileName: pallen.nsf\n\n1. login:  pallen pw: ke9davis\n\n I don't think these are required by the ISP \n\n  2.  static IP address\n\n IP: 64.216.90.105\n Sub: 255.255.255.248\n gate: 64.216.90.110\n DNS: 151.164.1.8\n\n  3.  Company: 0413\n        RC:  105891"
+}
