@@ -1,14 +1,17 @@
 import pandas as pd
-def export_features_to_excel(features_list, filename='features_export.xlsx'):
+
+
+def export_features_to_excel(features_list, filename="features_export.xlsx"):
     # Create a dictionary with the required columns
     data = [
         {
-            'Sender First Name': feature.reciever_first_name,
-            'Sender Last Name': feature.reciever_last_name,
-            'Sender Email': feature.reciever_email,
-            'organization' : feature.reciever_org,
-            'phone number' : feature.phone_numbers,
-            'Subject' : feature.subject
+            "Sender First Name": feature.sender_first_name,
+            "Sender Last Name": feature.sender_last_name,
+            "Sender Email": feature.sender_email,
+            "organization": feature.sender_org,
+            "phone number": feature.phone_numbers,
+            "Subject": feature.subject,
+            "intent": feature.intent_category,
         }
         for feature in features_list
     ]

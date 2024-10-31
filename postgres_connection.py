@@ -1,5 +1,6 @@
 import os
 import json
+from datetime import datetime
 import psycopg2
 from psycopg2 import Error
 import logging
@@ -42,7 +43,17 @@ def execute_query(conn, query, params=None):
                 cur.execute(query)
             conn.commit()
             if cur.description:
-                return cur.fetchall()
+                rows = cur.fetchall()
+                column_names = [desc[0] for desc in cur.description]
+                data = [dict(zip(column_names, row)) for row in rows]
+
+                # Convert datetime objects to ISO format
+                for item in data:
+                    if "date" in item and isinstance(item["date"], datetime):
+                        item["date"] = item["date"].strftime("%a, %d %b %Y %H:%M:%S %z")
+
+                json_data = json.dumps(data)
+                return json_data
             else:
                 # No results returned (e.g., INSERT, UPDATE, DELETE)
                 return None
@@ -59,9 +70,9 @@ def add_mail_row(conn, obj):
         INSERT INTO public.email_messages (
             sender_first_name, sender_last_name, receiver_first_name, receiver_last_name,
             sender_email, receiver_email, sender_org, receiver_org, subject, body, date, message_id,
-            word_count, summarised_body, phone_numbers, named_entities
+            word_count, summarised_body, intent_category, phone_numbers, named_entities
         ) VALUES (
-            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, TO_TIMESTAMP(%s, 'Dy DD Mon YYYY HH24:MI:SS'), %s, %s, %s, %s, %s
+            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, TO_TIMESTAMP(%s, 'Dy DD Mon YYYY HH24:MI:SS'), %s, %s, %s, %s, %s, %s
         );
     """
     params = (
@@ -79,6 +90,7 @@ def add_mail_row(conn, obj):
         obj.message_id,
         obj.word_count,
         obj.summarised_body,
+        obj.intent_category,
         obj.phone_numbers if isinstance(obj.phone_numbers, list) else [],
         json.dumps(obj.named_entities) if obj.named_entities else [],
     )
