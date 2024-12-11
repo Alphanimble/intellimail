@@ -80,7 +80,12 @@ def categorize_mail(obj):
     predicted_category = max(cats, key=cats.get)
     print(f"{predicted_category}")
     return predicted_category
-
+def categorize_text(text):
+    doc = nlp(text)
+    cats = doc._.cats
+    predicted_category = max(cats, key=cats.get)
+    print(f"{predicted_category}")
+    return predicted_category
 
 # print(nlp("We are seeking immediate investment for our startup.")._.cats)
 #

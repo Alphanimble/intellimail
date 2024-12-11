@@ -138,3 +138,5 @@ dmypy.json
 cython_debug/
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Python
+emails-2018.sqlite3
+emails-2019.sqlite3

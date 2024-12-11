@@ -4,7 +4,7 @@ import regexParser
 import excelConverter
 import mongoPusher
 import spacy_parser_layer
-import postgres_connection
+# import postgres_connection
 import classyTest
 
 df = pd.read_csv("data.csv")
@@ -33,13 +33,13 @@ spacy_parser_layer.process_features(parsed_data_list)
 for obj in parsed_data_list:
     obj.intent_category = classyTest.categorize_mail(obj)
 
-excelConverter.export_features_to_excel(parsed_data_list)
+# excelConverter.export_features_to_excel(parsed_data_list)
 
 
 # mongoPusher.convert_to_json(parsed_data_list)
 
-conn = postgres_connection.connect_to_db("mails", "root", "root")
-if conn:
-    print("connected")
-    for i in parsed_data_list:
-        postgres_connection.add_mail_row(conn, i)
+# conn = postgres_connection.connect_to_db("mails", "root", "root")
+# if conn:
+#     print("connected")
+#     for i in parsed_data_list:
+#         postgres_connection.add_mail_row(conn, i)

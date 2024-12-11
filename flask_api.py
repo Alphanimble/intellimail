@@ -3,7 +3,7 @@ from flask_cors import CORS
 import mistral_layer
 
 app = Flask(__name__)
-CORS(app)  # Add this line to enable CORS for all routes
+CORS(app)
 
 
 def reverse_text(text):
